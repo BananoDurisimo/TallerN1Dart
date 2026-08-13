@@ -66,6 +66,63 @@ void main() {
         }
         break;
 
+      case '3':
+        // Actualizar producto
+        print('\n--- Actualizar producto ---');
+        if (productos.isEmpty) {
+          print('No hay productos para actualizar.');
+          break;
+        }
+
+        for (int i = 0; i < productos.length; i++) {
+          Map<String, dynamic> p = productos[i];
+          print('${i + 1}. ${p['nombre']} | Precio: \$${p['precio']} | Cantidad: ${p['cantidad']}');
+        }
+
+        stdout.write('\nIngresa el número del producto a actualizar: ');
+        int? indiceActualizar = int.tryParse(stdin.readLineSync() ?? '');
+        
+        if (indiceActualizar == null || indiceActualizar < 1 || indiceActualizar > productos.length) {
+          print('Error: Número fuera de rango.');
+          break;
+        }
+
+        int idx = indiceActualizar - 1;
+        Map<String, dynamic> productoActual = productos[idx];
+
+        print('Deja vacío (presiona Enter) para mantener el valor actual.');
+
+        stdout.write('Nuevo nombre (actual: ${productoActual['nombre']}): ');
+        String? nuevoNombre = stdin.readLineSync();
+        if (nuevoNombre != null && nuevoNombre.trim().isNotEmpty) {
+          productoActual['nombre'] = nuevoNombre.trim();
+        }
+
+        stdout.write('Nuevo precio (actual: ${productoActual['precio']}): ');
+        String? nuevoPrecioStr = stdin.readLineSync();
+        if (nuevoPrecioStr != null && nuevoPrecioStr.trim().isNotEmpty) {
+          double? nuevoPrecio = double.tryParse(nuevoPrecioStr.trim());
+          if (nuevoPrecio != null && nuevoPrecio >= 0) {
+            productoActual['precio'] = nuevoPrecio;
+          } else {
+            print('Precio inválido, se conserva el anterior.');
+          }
+        }
+
+        stdout.write('Nueva cantidad (actual: ${productoActual['cantidad']}): ');
+        String? nuevaCantidadStr = stdin.readLineSync();
+        if (nuevaCantidadStr != null && nuevaCantidadStr.trim().isNotEmpty) {
+          int? nuevaCantidad = int.tryParse(nuevaCantidadStr.trim());
+          if (nuevaCantidad != null && nuevaCantidad >= 0) {
+            productoActual['cantidad'] = nuevaCantidad;
+          } else {
+            print('Cantidad inválida, se conserva la anterior.');
+          }
+        }
+
+        print(' Producto actualizado correctamente.');
+        break;
+
       
 
       default:
