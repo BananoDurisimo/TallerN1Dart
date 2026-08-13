@@ -53,6 +53,19 @@ void main() {
         print(' Producto "${nombre.trim()}" agregado correctamente.');
         break;
 
+      case '2':
+        // Listar productos
+        print('\n--- Listado de productos ---');
+        if (productos.isEmpty) {
+          print('No hay productos registrados.');
+        } else {
+          for (int i = 0; i < productos.length; i++) {
+            Map<String, dynamic> p = productos[i];
+            print('${i + 1}. ${p['nombre']} | Precio: \$${p['precio']} | Cantidad: ${p['cantidad']}');
+          }
+        }
+        break;
+
       
 
       default:
