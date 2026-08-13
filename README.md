@@ -80,30 +80,6 @@ Desarrollar una aplicación funcional de gestión de catálogo que:
 
 4. **Interactúa con el menú**: Selecciona una opción (1-5) y sigue las instrucciones en pantalla.
 
-### Ejemplo de Uso
-
-```
-===============================
-   CATÁLOGO DE PRODUCTOS
-===============================
-1. Agregar producto
-2. Listar productos
-3. Actualizar producto
-4. Eliminar producto
-5. Salir
-===============================
-Selecciona una opción: 1
-
---- Agregar nuevo producto ---
-Nombre del producto: Laptop
-Precio: 1500.50
-Cantidad disponible: 10
-✅ Producto "Laptop" agregado correctamente.
-
-[Menú vuelve a aparecer]
-```
-
----
 
 ## 📸 Evidencia de Ejecución
 
