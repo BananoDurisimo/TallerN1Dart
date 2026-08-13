@@ -123,7 +123,37 @@ void main() {
         print(' Producto actualizado correctamente.');
         break;
 
-      
+      case '4':
+        // Eliminar producto
+        print('\n--- Eliminar producto ---');
+        if (productos.isEmpty) {
+          print('No hay productos para eliminar.');
+          break;
+        }
+
+        for (int i = 0; i < productos.length; i++) {
+          Map<String, dynamic> p = productos[i];
+          print('${i + 1}. ${p['nombre']} | Precio: \$${p['precio']} | Cantidad: ${p['cantidad']}');
+        }
+
+        stdout.write('\nIngresa el número del producto a eliminar: ');
+        int? indiceEliminar = int.tryParse(stdin.readLineSync() ?? '');
+        
+        if (indiceEliminar == null || indiceEliminar < 1 || indiceEliminar > productos.length) {
+          print('Error: Número fuera de rango.');
+          break;
+        }
+
+        int idxElim = indiceEliminar - 1;
+        String nombreEliminado = productos[idxElim]['nombre'];
+        productos.removeAt(idxElim);
+        print(' Producto "$nombreEliminado" eliminado correctamente.');
+        break;
+
+      case '5':
+        print('\n Saliendo del programa. ¡Hasta luego!');
+        continuar = false;
+        break;
 
       default:
         print(' Opción inválida. Por favor selecciona una opción del 1 al 5.');
